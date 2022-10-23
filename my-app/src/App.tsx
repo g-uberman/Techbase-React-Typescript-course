@@ -1,12 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+interface AppProps {
+  headerText: string;
+  extraText?: string; //optional prop
+}
+
+// props need to be passed here before use below:
+
+function App({ headerText, extraText='default text'}: AppProps) {
   return (
-    <div>
-      "Test"
-    </div>
+    <>
+    <h1>{headerText}</h1>
+    {extraText && <p>{extraText}</p>}
+    </>
   );
 }
 
