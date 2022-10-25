@@ -4,17 +4,23 @@ import { useState } from "react";
 //Shiping
 //Payment
 
-type CheckoutStep = "Details" | "Shipping" | "Payment";
+// type CheckoutStep = "Details" | "Shipping" | "Payment";
+
+enum CheckoutStep {
+  Details = "Details",
+  Shipping = "Shipping",
+  Payment = "Payment"
+}
 
 export default function App() {
-  const [checkoutStep, setCheckoutStep] = useState<CheckoutStep>("Details");
+  const [checkoutStep, setCheckoutStep] = useState<CheckoutStep>(CheckoutStep.Details);
 
   return (
     <>
       {checkoutStep === "Details" && (
         <>
           <h1>Details</h1>
-          <button type="button" onClick={() => setCheckoutStep("Shipping")}>
+          <button type="button" onClick={() => setCheckoutStep(CheckoutStep.Shipping)}>
             Next
           </button>
         </>
@@ -22,7 +28,7 @@ export default function App() {
       {checkoutStep === "Shipping" && (
         <>
           <h1>Shipping</h1>
-          <button type="button" onClick={() => setCheckoutStep("Payment")}>
+          <button type="button" onClick={() => setCheckoutStep(CheckoutStep.Payment)}>
             Next
           </button>
         </>
